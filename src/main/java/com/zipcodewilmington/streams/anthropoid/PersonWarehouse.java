@@ -4,10 +4,7 @@ import com.zipcodewilmington.streams.tools.ReflectionUtils;
 import com.zipcodewilmington.streams.tools.logging.LoggerHandler;
 import com.zipcodewilmington.streams.tools.logging.LoggerWarehouse;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -36,7 +33,8 @@ public final class PersonWarehouse implements Iterable<Person> {
      * @return list of names of Person objects
      */ // TODO
     public List<String> getNames() {
-        return null;
+//        return null;
+        return people.stream().map(Person::getName).collect(Collectors.toList());
     }
 
 
@@ -76,7 +74,8 @@ public final class PersonWarehouse implements Iterable<Person> {
      * @return Stream of Stream of Aliases
      */ // TODO
     public Stream<Stream<String>> getNestedAliases() {
-        return null;
+//        return null;
+        return Stream.of(getAllAliases());
     }
 
 
@@ -84,7 +83,8 @@ public final class PersonWarehouse implements Iterable<Person> {
      * @return Stream of all Aliases
      */ // TODO
     public Stream<String> getAllAliases() {
-        return null;
+//        return null;
+        return people.stream().map(Person::getAliases).flatMap(Arrays::stream);
     }
 
     // DO NOT MODIFY
